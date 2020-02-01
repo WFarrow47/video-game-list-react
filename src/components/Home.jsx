@@ -69,7 +69,8 @@ const Home = () => {
           method: "GET",
           url: nextPage,
           headers: {
-            "content-type": "application/octet-stream"
+            "content-type": "application/octet-stream",
+            "User-Agent": "wf-video-games-database"
           }
         };
         const request = await Axios(requestOpt);
