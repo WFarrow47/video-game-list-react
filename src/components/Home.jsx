@@ -15,28 +15,28 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 
 import Layout from "./_Layout/_Layout";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   heroContent: {
     backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(8, 0, 6)
+    padding: theme.spacing(8, 0, 6),
   },
   heroButtons: {
-    marginTop: theme.spacing(4)
+    marginTop: theme.spacing(4),
   },
   cardGrid: {
     paddingTop: theme.spacing(8),
-    paddingBottom: theme.spacing(8)
+    paddingBottom: theme.spacing(8),
   },
   card: {
     height: "100%",
     display: "flex",
-    flexDirection: "column"
+    flexDirection: "column",
   },
   cardMedia: {
-    paddingTop: "56.25%" // 16:9
+    paddingTop: "56.25%", // 16:9
   },
   cardContent: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   progressParent: {
     width: "100%",
@@ -44,8 +44,8 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     alignItems: "center",
     paddingTop: theme.spacing(8),
-    paddingBottom: theme.spacing(8)
-  }
+    paddingBottom: theme.spacing(8),
+  },
 }));
 
 const Home = () => {
@@ -70,8 +70,8 @@ const Home = () => {
           url: nextPage,
           headers: {
             "content-type": "application/octet-stream",
-            "User-Agent": "wf-video-games-database"
-          }
+            "User-Agent": "wf-video-games-database",
+          },
         };
         const request = await Axios(requestOpt);
         let games;
@@ -92,7 +92,7 @@ const Home = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const parseDate = date => {
+  const parseDate = (date) => {
     let parts = date.split("-");
     let newDate = new Date(parts[0], parts[1] - 1, parts[2]);
 
@@ -108,7 +108,7 @@ const Home = () => {
       "September",
       "October",
       "November",
-      "December"
+      "December",
     ][newDate.getMonth()];
 
     return `${newDate.getDate()} ${month} ${newDate.getFullYear()}`;
@@ -156,7 +156,7 @@ const Home = () => {
           <Container className={classes.cardGrid} maxWidth="md">
             {/* End hero unit */}
             <Grid container spacing={4}>
-              {cards.map(card => (
+              {cards.map((card) => (
                 <Grid item key={card.id} xs={12} sm={6} md={4}>
                   <Card className={classes.card}>
                     <CardMedia
@@ -176,8 +176,14 @@ const Home = () => {
                       </Typography>
                     </CardContent>
                     <CardActions>
-                      <Button disabled size="small" color="primary">
-                        About Game - <small>&nbsp;(coming soon)</small>
+                      <Button
+                        onClick={() =>
+                          (window.location.href = `https://rawg.io/games/${card.slug}`)
+                        }
+                        size="small"
+                        color="primary"
+                      >
+                        {card.reviews_count} reviews
                       </Button>
                     </CardActions>
                   </Card>

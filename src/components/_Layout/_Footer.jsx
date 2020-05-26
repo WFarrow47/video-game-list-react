@@ -8,19 +8,22 @@ const Copyright = () => {
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
       {new Date().getFullYear()}{" "}
-      <Link color="inherit" href="https://innovex.com.au/">
-        InnoVex
+      <Link
+        color="inherit"
+        href="https://github.com/WFarrow47/video-game-list-react"
+      >
+        William Farrow (MIT License)
       </Link>
       {"."}
     </Typography>
   );
 };
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   footer: {
     backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(6)
-  }
+    padding: theme.spacing(6),
+  },
 }));
 
 const Footer = () => {
@@ -28,8 +31,8 @@ const Footer = () => {
   return (
     <footer className={classes.footer}>
       <Typography variant="h6" align="center" gutterBottom>
-        <Link color="inherit" href="https://innovex.com.au/">
-          Hire Us!
+        <Link color="inherit" href="https://wfarrow.dev/">
+          William Farrow
         </Link>
       </Typography>
       <Typography
